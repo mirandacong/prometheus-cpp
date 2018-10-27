@@ -12,7 +12,7 @@ env:
 
 install:
   - sudo apt-get update
-  - sudo apt-get install -y cmake3 curl python-pip git lcov libcurl4-openssl-dev gcc-4.8 g++-4.8
+  - sudo apt-get install -y cmake3 curl doxygen python-pip git lcov libcurl4-openssl-dev gcc-4.8 g++-4.8
   - sudo echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
   - curl https://storage.googleapis.com/bazel-apt/doc/apt-key.pub.gpg | sudo apt-key add -
   - sudo apt-get update && sudo apt-get install -y bazel openjdk-8-jdk-headless
@@ -47,6 +47,18 @@ script:
   - mkdir -p deploy
   - make DESTDIR=`pwd`/deploy install
   - popd
+
+  - cd "${TRAVIS_BUILD_DIR}/doc"
+  - doxygen
+  - touch html/.nojekyll
+
+deploy:
+  provider: pages
+  local-dir: doc/html
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master
 
 # addons:
 #   coverity_scan:
