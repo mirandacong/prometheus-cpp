@@ -48,9 +48,11 @@ script:
   - make DESTDIR=`pwd`/deploy install
   - popd
 
-  - cd "${TRAVIS_BUILD_DIR}/doc"
+  - pushd .
+  - cd doc
   - doxygen
   - touch html/.nojekyll
+  - popd
 
 deploy:
   provider: pages
