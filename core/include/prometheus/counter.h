@@ -1,6 +1,7 @@
 #pragma once
 
 #include "prometheus/client_metric.h"
+#include "prometheus/core_export.h"
 #include "prometheus/detail/counter_builder.h"
 #include "prometheus/gauge.h"
 #include "prometheus/metric_type.h"
@@ -22,7 +23,7 @@ namespace prometheus {
 ///
 /// The class is thread-safe. No concurrent call to any API of this type causes
 /// a data race.
-class Counter {
+class PROMETHEUS_CPP_CORE_EXPORT Counter {
  public:
   static const MetricType metric_type{MetricType::Counter};
 
@@ -76,6 +77,6 @@ class Counter {
 ///
 /// To finish the configuration of the Counter metric, register it with
 /// Register(Registry&).
-detail::CounterBuilder BuildCounter();
+PROMETHEUS_CPP_CORE_EXPORT detail::CounterBuilder BuildCounter();
 
 }  // namespace prometheus

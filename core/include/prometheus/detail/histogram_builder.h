@@ -3,6 +3,8 @@
 #include <map>
 #include <string>
 
+#include "prometheus/core_export.h"
+
 namespace prometheus {
 
 template <typename T>
@@ -12,7 +14,7 @@ class Registry;
 
 namespace detail {
 
-class HistogramBuilder {
+class PROMETHEUS_CPP_CORE_EXPORT HistogramBuilder {
  public:
   HistogramBuilder& Labels(const std::map<std::string, std::string>& labels);
   HistogramBuilder& Name(const std::string&);

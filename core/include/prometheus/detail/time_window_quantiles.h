@@ -4,12 +4,13 @@
 #include <cstddef>
 #include <vector>
 
+#include "prometheus/core_export.h"
 #include "prometheus/detail/ckms_quantiles.h"
 
 namespace prometheus {
 namespace detail {
 
-class TimeWindowQuantiles {
+class PROMETHEUS_CPP_CORE_EXPORT TimeWindowQuantiles {
   using Clock = std::chrono::steady_clock;
 
  public:

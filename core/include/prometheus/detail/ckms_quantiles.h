@@ -5,10 +5,12 @@
 #include <functional>
 #include <vector>
 
+#include "prometheus/core_export.h"
+
 namespace prometheus {
 namespace detail {
 
-class CKMSQuantiles {
+class PROMETHEUS_CPP_CORE_EXPORT CKMSQuantiles {
  public:
   struct Quantile {
     const double quantile;
